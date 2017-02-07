@@ -118,6 +118,13 @@ RSpec.describe AddressBook do
       entry_three = book.entries[2]
       check_entry(entry_three, "Joe", "555-555-3660", "joe@blocmail.com")
     end
-
+ end
+ # Test the binary_search method
+ describe "#binary_search" do
+   it "searches AddressBook for a non-existent entry" do
+     book.import_from_csv("entries.csv")
+     entry = book.binary_search("Dan")
+     expect(entry).to be_nil
+   end
  end
 end
