@@ -154,6 +154,7 @@
      puts "d - delete entry"
      puts "e - edit this entry"
      puts "m - return to main menu"
+     puts "x - delete all entires"
 
      # #17
      selection = gets.chomp
@@ -170,11 +171,21 @@
       when "m"
         system "clear"
         main_menu
+      when "x"
+        system "clear"
+        detonate
+        puts "No more entires"
       else
         system "clear"
         puts "#{selection} is not a valid input"
         entry_submenu(entry)
       end
+    end
+
+    def detonate
+      address_book.entries = []
+      end
+      puts "All entires has been deleted"
     end
 
     def delete_entry(entry)
@@ -227,5 +238,5 @@
           puts entry.to_s
           search_submenu(entry)
         end
-      end  
+      end
 end
